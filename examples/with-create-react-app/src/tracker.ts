@@ -11,11 +11,11 @@ export const userId = v4();
 
 localStorage.removeItem("__openreplay_uuid");
 localStorage.removeItem("__openreplay_token");
-
+console.log(process.env)
 const tracker = new Tracker({
   __DISABLE_SECURE_MODE: true,
-  projectKey: process.env.KEY!,
-  ingestPoint: process.env.INGEST,
+  projectKey: process.env.REACT_APP_KEY!,
+  ingestPoint: process.env.REACT_APP_INGEST,
   verbose: true,
   __debug__: true,
   onStart: () => {
