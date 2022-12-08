@@ -14,7 +14,8 @@ localStorage.removeItem("__openreplay_token");
 
 const tracker = new Tracker({
   __DISABLE_SECURE_MODE: true,
-
+  projectKey: process.env.KEY!,
+  ingestPoint: process.env.INGEST,
   verbose: true,
   __debug__: true,
   onStart: () => {
