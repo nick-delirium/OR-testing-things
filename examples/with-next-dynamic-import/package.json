@@ -8,8 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openreplay/tracker": "3.5.10",
-    "@openreplay/tracker-assist": "../../../openreplay/tracker/tracker-assist",
+    "@openreplay/tracker": "file:../../../openreplay/tracker/tracker",
+    "@openreplay/tracker-assist": "file:../../../openreplay/tracker/tracker-assist",
     "next": "12.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",

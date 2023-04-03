@@ -11,16 +11,23 @@ export const userId = v4();
 
 localStorage.removeItem("__openreplay_uuid");
 localStorage.removeItem("__openreplay_token");
-console.log(process.env)
+
 const tracker = new Tracker({
   __DISABLE_SECURE_MODE: true,
   projectKey: process.env.REACT_APP_KEY!,
   ingestPoint: process.env.REACT_APP_INGEST,
+  // @ts-ignore
+  network: { capturePayload: true },
   verbose: true,
+  captureIFrames: true,
   __debug__: true,
+  defaultInputMode: 0,
+  obscureInputDates: false,
+  obscureInputNumbers: false,
+  obscureTextNumbers: false,
   onStart: () => {
-    tracker.setUserID(userId);
-    tracker.setMetadata('test', 'hello')
+    tracker.setUserID('Nikita');
+    tracker.setMetadata('test', 'cypress')
   },
 
   domSanitizer: (node) => {
@@ -42,6 +49,15 @@ tracker.use(
     },
     onRecordingRequest: (agentInfo) => {
       console.log('getting request', agentInfo)
+    },
+    onCallDeny: () => {
+      console.log('call deny')
+    },
+    onRecordingDeny: (args) => {
+      console.log('rec', args)
+    },
+    onRemoteControlDeny: (args) => {
+      console.log('control deny', args)
     }
   })
 );

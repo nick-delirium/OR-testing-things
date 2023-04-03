@@ -1,8 +1,5 @@
 import React from "react";
-import Form from 'react-bootstrap/Form';
 import Tracker from "@openreplay/tracker";
-import trackerFetch from '@openreplay/tracker-fetch';
-import trackerAxios from '@openreplay/tracker-axios';
 import axios from "axios";
 import create from "zustand";
 import trackerZustand from '@openreplay/tracker-zustand';
@@ -45,7 +42,7 @@ function App() {
   const [sUrl, setURL] = React.useState('')
   const rerender = React.useReducer(() => ({}), {})[1]
   const zustandStore = useBearStore()
-
+  const [input, setInput] = React.useState("")
   store.subscribe(() => setCounter(store.getState().value))
 
   const table = useReactTable({
@@ -68,8 +65,7 @@ function App() {
         const url = trackerEx.getSessionURL()
         setURL(url || '')
         setTracker(trackerEx)
-        trackerEx.use(trackerFetch({ overrideGlobal: true }));
-      })
+      }).catch(e => console.log(e))
 
   }, [])
 
@@ -118,7 +114,7 @@ function App() {
   const axiosInst = axios.create()
 
   const addAxios = () => {
-    tracker?.use(trackerAxios({ instance: axiosInst }))
+  console.log('hull')
   }
   const testAxiosApi = () => {
     axiosInst('https://pokeapi.co/api/v2/pokemon/ditto').then(p => console.log(p));
@@ -126,8 +122,13 @@ function App() {
   const testZustand = () => {
     zustandStore.increasePopulation()
   }
+
   return (
     <>
+    <div style={{ display: "flex", "flexDirection": "column"}}>
+      <div>1</div>
+      <div>2</div>
+    </div>
     <button onClick={() => setRen(false)}>test rerender</button>
     <button onClick={testAPI}>test api</button>
     <button onClick={testAPIError}>test api error</button>
@@ -143,9 +144,10 @@ function App() {
     <button onClick={redux3}>test Redux {counter}</button>
     <button onClick={redux4}>test Redux {counter}</button>
     <button onClick={testJSError}>JS Error</button>
+    <input id="visible-input" value={input} onChange={(e) => setInput(e.target.value)} type="text" />
+    <input type="checkbox" />
     <div className="App">
       <header className="App-header">
-        {/* <iframe src="https://fr.wikipedia.org/wiki/Main_Page" width="640" height="480" title="testing"></iframe> */}
         <img src={logo} className="App-logo" alt="logo" />
         <p>Your userId is [{userId}]</p>
         <p>session url: <a rel="noreferrer noopener" target="_blank" href={sUrl}>{sUrl}</a></p>
@@ -154,19 +156,15 @@ function App() {
           Rerender
         </button>
         <div className="testhide"> should not be seen here </div>
-        <input className="testobscure" placeholder="test"></input>
-        <div data-openreplay-obscured>obscured</div>
-        <div data-openreplay-masked>masked deprecated</div>
-        <input data-openreplay-obscured type="text" placeholder="obscured text"></input>
-        <Form.Select size="lg" aria-label="Default select example">
-          <option>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </Form.Select>
+        <input className="testobscure" placeholder="test" id="testobscured"></input>
+        <div data-openreplay-obscured id="obscured-div">obscured</div>
+        <div data-openreplay-masked id="masked-div">masked deprecated</div>
+        <input data-openreplay-obscured type="text" id="obscured-text" placeholder="obscured text"></input>
       </header>
+      <div data-openreplay-hidden>
+        {/*<iframe src={"https://wikipedia.com"} title={"test"}  />*/}
+      </div>
       <div className="p-2">
-{/*
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup: { id: React.Key | null | undefined; headers: any[]; }) => (
@@ -211,7 +209,7 @@ function App() {
             </tr>
           ))}
         </tfoot>
-      </table> */}
+      </table>
       <div className="h-4" />
     </div>
     </div>

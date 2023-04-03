@@ -114,6 +114,11 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@medv/finder@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@medv/finder/-/finder-3.0.0.tgz#141b81504f71c25ca860716451b8bcb2d8ef4783"
+  integrity sha512-GhTmdnzIm+EMCSAF6QL1JunVN/9r4GUbYBWbhX7zOCtNqhsA/Bo9ltr+Cl5p5U4F9PTEwnF7pWmSPWC3H3MUQQ==
+
 "@napi-rs/triples@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@napi-rs/triples/-/triples-1.0.3.tgz#76d6d0c3f4d16013c61e45dfca5ff1e6c31ae53c"
@@ -234,18 +239,17 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@openreplay/tracker-assist@../../../openreplay/tracker/tracker-assist":
-  version "3.5.15"
+"@openreplay/tracker-assist@file:../../../openreplay/tracker/tracker-assist":
+  version "5.0.2"
   dependencies:
     csstype "^3.0.10"
-    peerjs "1.4.6"
+    peerjs "1.4.7"
     socket.io-client "^4.4.1"
 
-"@openreplay/tracker@^3.5.15":
-  version "3.5.15"
-  resolved "https://registry.yarnpkg.com/@openreplay/tracker/-/tracker-3.5.15.tgz#9600c42023e7888b7f486cc19d2107a6b1c123d3"
-  integrity sha512-lJsRTEgFilQkW4wuwSXqe/jcxvFB8K7zCLhkPXhC+MfHw1Wg3zkUI7N21zwa4kYnBsm/vo1F8fn/348ZR/Cwzg==
+"@openreplay/tracker@file:../../../openreplay/tracker/tracker":
+  version "5.0.1"
   dependencies:
+    "@medv/finder" "^3.0.0"
     error-stack-parser "^2.0.6"
 
 "@rushstack/eslint-patch@^1.0.6":
@@ -2366,10 +2370,10 @@ peerjs-js-binarypack@1.0.1:
   resolved "https://registry.yarnpkg.com/peerjs-js-binarypack/-/peerjs-js-binarypack-1.0.1.tgz#80fa2b61c794a6b16d64253700405e476ada29be"
   integrity sha512-N6aeia3NhdpV7kiGxJV5xQiZZCVEEVjRz2T2C6UZQiBkHWHzUv/oWA4myQLcwBwO8LUoR1KWW5oStvwVesmfCg==
 
-peerjs@1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/peerjs/-/peerjs-1.4.6.tgz#781f335f4043fcd686dc19acd3341db0570f7e72"
-  integrity sha512-0XA105/9yBFGxfpyCjlI1bcBiyPmXHs8+UDvO2j1WGnY+FXilMn35+P/3t8HzKnUnR1SX0PRkDSk8kM17ciNxA==
+peerjs@1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/peerjs/-/peerjs-1.4.7.tgz#37db0cd06fb0c542664bd6b2f62e87c98d38fbad"
+  integrity sha512-dWE2HIGvJO0Hm8lYHJiO/5OWl8xYtGcAuU08To1HMIfhh76ULzkCS3NIQO/PZm4noO1RhaGTkQaQ6sbAss6/Tg==
   dependencies:
     "@swc/helpers" "^0.3.13"
     eventemitter3 "^4.0.7"

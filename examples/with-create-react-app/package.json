@@ -5,10 +5,10 @@
   "dependencies": {
     "@openreplay/tracker": "file:../../../openreplay/tracker/tracker",
     "@openreplay/tracker-assist": "file:../../../openreplay/tracker/tracker-assist",
-    "@openreplay/tracker-axios": "3.6.1",
-    "@openreplay/tracker-fetch": "3.6.1",
-    "@openreplay/tracker-redux": "3.5.1",
-    "@openreplay/tracker-zustand": "1.0.2",
+    "@openreplay/tracker-axios": "^3.6.1",
+    "@openreplay/tracker-fetch": "^3.6.1",
+    "@openreplay/tracker-redux": "^3.5.1",
+    "@openreplay/tracker-zustand": "^1.0.3",
     "@tanstack/react-table": "^8.2.6",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
@@ -49,5 +49,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.1"
 }
