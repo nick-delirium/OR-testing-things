@@ -15,6 +15,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+import { GetLocationsButton } from "./feature/locations/ui/GetLocationsButton/GetLocationsButton.component";
 
 const trackerEx = getTracker()
 
@@ -31,7 +32,7 @@ const useBearStore = create(
     increasePopulation: () => set((state: any) => ({ bears: state.bears + 1 })),
     removeAllBears: () => set({ bears: 0 }),
   }))
-)
+);
 
 function App() {
   const [tracker, setTracker] = React.useState<Tracker>();
@@ -137,6 +138,7 @@ function App() {
     <button onClick={customError}>test custom tags error</button>
     <button onClick={addAxios}>add axios</button>
     <button onClick={testAxiosApi}>test axios</button>
+    <GetLocationsButton />
     <button onClick={testZustand}>zustand {zustandStore.bears}</button>
     <a href="https://google.com">test link</a>
     <br />
