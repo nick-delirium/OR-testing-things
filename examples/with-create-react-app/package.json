@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.11",
     "@openreplay/tracker": "file:../../../openreplay/tracker/tracker",
     "@openreplay/tracker-assist": "file:../../../openreplay/tracker/tracker-assist",
     "@openreplay/tracker-axios": "^3.6.1",
@@ -15,6 +16,8 @@
     "@types/react-dom": "^17.0.0",
     "@types/uuid": "^8.3.3",
     "axios": "^0.27.2",
+    "classnames": "^2.3.2",
+    "graphql": "^16.6.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^17.0.2",
