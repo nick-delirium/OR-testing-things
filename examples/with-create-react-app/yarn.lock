@@ -1508,10 +1508,11 @@
   integrity sha512-QrlzwiYZqfJjigeSwy36h5L3zJYXj4ChVEPSUw0XGo+raiJAtd7g1O4iR6CR6ybKPhCmI6Z0RhMNji4HK/LGfA==
 
 "@openreplay/tracker@file:../../../openreplay/tracker/tracker":
-  version "6.0.0"
+  version "6.0.1-beta.1"
   dependencies:
     "@medv/finder" "^3.0.0"
     error-stack-parser "^2.0.6"
+    fflate "^0.7.4"
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
   version "0.4.3"
@@ -5146,6 +5147,11 @@ fb-watchman@^2.0.0:
   integrity sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==
   dependencies:
     bser "2.1.1"
+
+fflate@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.7.4.tgz#61587e5d958fdabb5a9368a302c25363f4f69f50"
+  integrity sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==
 
 figgy-pudding@^3.5.1:
   version "3.5.2"
