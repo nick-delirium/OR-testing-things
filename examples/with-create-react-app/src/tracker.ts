@@ -27,7 +27,7 @@ const tracker = new Tracker({
   obscureTextNumbers: false,
   onStart: () => {
     tracker.setUserID('Nikita');
-    tracker.setMetadata('test', 'cypress')
+    tracker.setMetadata('test', 'test meta')
   },
 
   domSanitizer: (node) => {

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+#root {
+
+}
+
 .App-logo {
   height: 40px;
   pointer-events: none;
@@ -34,4 +38,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  display: inline-block!important;
+  outline: 0!important;
+  cursor: pointer!important;
+  font-weight: 600!important;
+  border-radius: 4px!important;
+  font-size: 13px!important;
+  height: 30px!important;
+  background-color: #0000000d!important;
+  color: #0e0e10!important;
+  padding: 0 20px!important;
+  border: 1px solid #423f3f !important;
+  margin: 1px 4px!important;
+}
+button:hover {
+  background-color: #0000001a;
+}
+
+input {
+  border: 1px solid #423f3f !important;
+}
+
+a {
+  color: blue!important;
 }
