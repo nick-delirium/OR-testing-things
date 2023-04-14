@@ -1,23 +1,22 @@
-import React from "react"
-import { TailwindWidgetIframe } from "../../../../tailwind/ui/components/TailwindWidgetIframe/TailwindWidgetIframe.component"
-import { userId } from "../../../../../tracker";
-import logo from "../../assets/logo.svg";
-import "./Dashboard.style.css"
+import React from 'react';
+import { TailwindWidgetIframe } from '../../../../tailwind/ui/components/TailwindWidgetIframe/TailwindWidgetIframe.component';
+import { userId } from '../../../../../tracker';
+import logo from '../../assets/logo.svg';
+import './Dashboard.style.css';
 
 interface DashboardProps {
   sUrl: string;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ sUrl }) => {
-  const [input, setInput] = React.useState("")
-
+  const [input, setInput] = React.useState('');
   return (
     <header className="header App-header">
       <div className="list">
         <img src={logo} className="App-logo" alt="logo" />
         <span>Your userId is [{userId}]</span>
         <span>
-          session url:{" "}
+          session url:{' '}
           <a rel="noreferrer noopener" target="_blank" href={sUrl} className={'link color-blue'}>
             {sUrl}
           </a>
@@ -30,11 +29,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ sUrl }) => {
           type="text"
         />
         <div className="testhide"> should not be seen here</div>
-        <input
-          className="testobscure input"
-          placeholder="test"
-          id="testobscured"
-        ></input>
+        <input className="testobscure input" placeholder="test" id="testobscured"></input>
         <div data-openreplay-obscured id="obscured-div">
           obscured
         </div>
@@ -51,5 +46,5 @@ export const Dashboard: React.FC<DashboardProps> = ({ sUrl }) => {
       </div>
       <TailwindWidgetIframe />
     </header>
-  )
-}
+  );
+};
