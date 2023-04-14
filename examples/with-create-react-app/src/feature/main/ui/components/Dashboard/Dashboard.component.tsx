@@ -25,7 +25,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ sUrl }) => {
           className="input"
           id="visible-input"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
           type="text"
         />
         <div className="testhide"> should not be seen here</div>

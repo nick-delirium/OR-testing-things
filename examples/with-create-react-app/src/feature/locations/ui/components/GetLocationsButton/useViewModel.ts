@@ -7,11 +7,16 @@ export enum ButtonStatus {
   Unknown = 'Unknown',
 }
 
-export const useViewModel = () => {
+export interface ViewModel {
+  status: ButtonStatus;
+  handleGetLocations: () => void;
+}
+
+export const useViewModel = (): ViewModel => {
   const [status, setStatus] = React.useState(ButtonStatus.Unknown);
 
   const handleGetLocations = React.useCallback(() => {
-    getLocations(getLocationsHandler).then((locations) => {
+    void getLocations(getLocationsHandler).then((locations) => {
       if (locations.ok) {
         setStatus(ButtonStatus.Success);
         console.log(locations.value);

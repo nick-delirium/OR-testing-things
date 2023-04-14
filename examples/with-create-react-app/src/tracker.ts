@@ -13,9 +13,9 @@ localStorage.removeItem('__openreplay_token');
 
 const tracker = new Tracker({
   __DISABLE_SECURE_MODE: true,
-  projectKey: process.env.REACT_APP_KEY!,
+  projectKey: process.env.REACT_APP_KEY ?? '',
   ingestPoint: process.env.REACT_APP_INGEST,
-  // @ts-ignore
+  // @ts-expect-error It is not yet clear why this field is used here
   network: { capturePayload: true },
   verbose: true,
   captureIFrames: true,
@@ -30,7 +30,7 @@ const tracker = new Tracker({
   },
 
   domSanitizer: (node) => {
-    return node.className
+    return typeof node.className !== 'undefined'
       ? node.className.includes?.('testhide')
         ? SanitizeLevel.Hidden
         : node.className.includes?.('testobscure')
@@ -41,11 +41,13 @@ const tracker = new Tracker({
 });
 
 tracker.use(
-  // @ts-ignore
+  // @ts-expect-error Later to deal with the type error
   trackerAssist({
     onAgentConnect: (agentStuff) => {
       console.log('hi', agentStuff);
-      return () => console.log('bye', agentStuff);
+      return () => {
+        console.log('bye', agentStuff);
+      };
     },
     onRemoteControlStart: (agentInfo) => {
       console.log('control', agentInfo);
@@ -70,11 +72,11 @@ const openReplayMiddleware = tracker.use(trackerRedux());
 export const recordGraphQL = tracker.use(trackerGraphQL());
 
 export const store = createStore(
-  // @ts-ignore
+  // @ts-expect-error Later will need to rewrite the type
   counterReducer,
   applyMiddleware(openReplayMiddleware)
 );
 
-export const getTracker = () => {
+export const getTracker = (): Tracker => {
   return tracker;
 };

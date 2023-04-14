@@ -1,18 +1,19 @@
 import { ApolloClient, InMemoryCache, from, ApolloLink } from '@apollo/client';
-import { onError } from "@apollo/client/link/error";
+import { onError } from '@apollo/client/link/error';
 import { recordGraphQL } from '../../tracker';
 
 const GQL_SERVER_URL = 'https://flyby-router-demo.herokuapp.com/';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors)
-    graphQLErrors.forEach(({ message, locations, path }) =>
-      console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      ),
-    );
+  if (typeof graphQLErrors !== 'undefined') {
+    graphQLErrors.forEach(({ message, locations, path }) => {
+      console.log(`[GraphQL error]: Message: ${message}, Location:`, locations, ', Path:', path);
+    });
+  }
 
-  if (networkError) console.log(`[Network error]: ${networkError}`);
+  if (typeof networkError !== 'undefined') {
+    console.log(`[Network error]: ${String(networkError)}`);
+  }
 });
 
 const trackerApolloLink = new ApolloLink((operation, forward) => {
@@ -20,7 +21,9 @@ const trackerApolloLink = new ApolloLink((operation, forward) => {
   return forward(operation).map((result) => {
     const operationDefinition = operation.query.definitions[0];
     return recordGraphQL(
-      operationDefinition.kind === 'OperationDefinition' ? operationDefinition.operation : 'unknown?',
+      operationDefinition.kind === 'OperationDefinition'
+        ? operationDefinition.operation
+        : 'unknown?',
       operation.operationName,
       operation.variables,
       result

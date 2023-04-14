@@ -1,5 +1,5 @@
 import React from 'react';
-import Tracker from '@openreplay/tracker';
+import type Tracker from '@openreplay/tracker';
 import axios from 'axios';
 import { create } from 'zustand';
 import trackerZustand from '@openreplay/tracker-zustand';
@@ -7,13 +7,12 @@ import trackerZustand from '@openreplay/tracker-zustand';
 import { getTracker, store } from '../../../../tracker';
 import './App.css';
 
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { type ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { GetLocationsButton } from '../../../locations/ui/components/GetLocationsButton/GetLocationsButton.component';
 import { Dashboard } from '../components/Dashboard/Dashboard.component';
 
 const trackerEx = getTracker();
 
-// @ts-ignore
 const zustandPlugin = trackerEx.use(trackerZustand());
 
 const bearStoreLogger = zustandPlugin('bear_store');
@@ -23,12 +22,12 @@ console.log(bearStoreLogger);
 const useBearStore = create(
   bearStoreLogger((set: any) => ({
     bears: 0,
-    increasePopulation: () => set((state: any) => ({ bears: state.bears + 1 })),
+    increasePopulation: () => set((state: any) => ({ bears: Number(state.bears) + 1 })),
     removeAllBears: () => set({ bears: 0 }),
   }))
 );
 
-export const MainPage = () => {
+export const MainPage: React.FC = () => {
   const [view, setView] = React.useState('main');
   const [tracker, setTracker] = React.useState<Tracker>();
   const [counter, setCounter] = React.useState(store.getState().value);
@@ -39,7 +38,9 @@ export const MainPage = () => {
   const rerender = React.useReducer(() => ({}), {})[1];
   const zustandStore = useBearStore();
   const [input, setInput] = React.useState('');
-  store.subscribe(() => setCounter(store.getState().value));
+  store.subscribe(() => {
+    setCounter(store.getState().value);
+  });
 
   const table = useReactTable({
     data,
@@ -53,10 +54,12 @@ export const MainPage = () => {
       .then((session) => {
         console.log(session);
         const url = trackerEx.getSessionURL();
-        setURL(url || '');
+        setURL(url ?? '');
         setTracker(trackerEx);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+      });
 
     return () => {
       trackerEx.stop();
@@ -65,61 +68,77 @@ export const MainPage = () => {
   }, []);
 
   React.useEffect(() => {
-    const id = setInterval(() => shouldRerender && rerender(), 5000);
-    return () => clearInterval(id);
+    const id = setInterval(() => {
+      shouldRerender && rerender();
+    }, 5000);
+    return () => {
+      clearInterval(id);
+    };
   }, [rerender, shouldRerender]);
 
   if (!sRen)
     return (
       <div>
-        <button onClick={() => setRen(true)}>test</button>
+        <button
+          onClick={() => {
+            setRen(true);
+          }}
+        >
+          test
+        </button>
         test
       </div>
     );
 
-  const testAPI = () => {
-    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-      .then((r) => r.json())
-      .then((p) => console.log(p));
+  const testAPI = (): void => {
+    void fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(async (r) => await r.json())
+      .then((p) => {
+        console.log(p);
+      });
   };
 
-  const testAPIError = () => {
-    fetch('https://pokeapi.co/api/v2/poakemon/ditto')
-      .then((r) => r.json())
-      .then((p) => console.log(p));
+  const testAPIError = (): void => {
+    void fetch('https://pokeapi.co/api/v2/poakemon/ditto')
+      .then(async (r) => await r.json())
+      .then((p) => {
+        console.log(p);
+      });
   };
 
-  const incrementRedux = () => {
+  const incrementRedux = (): void => {
     store.dispatch({ type: 'counter/incremented' });
   };
-  const redux2 = () => {
+  const redux2 = (): void => {
     store.dispatch({ type: 'counter/test' });
   };
-  const redux3 = () => {
+  const redux3 = (): void => {
     store.dispatch({ type: 'counter/test2' });
   };
-  const redux4 = () => {
+  const redux4 = (): void => {
     store.dispatch({ type: 'counter/test3' });
   };
 
-  const customEvent = () => {
+  const customEvent = (): void => {
     tracker?.event('test', 'event');
   };
 
-  const customError = () => {
+  const customError = (): void => {
     tracker?.handleError(new Error(), { testing: 'stuff', taha: 'is cool' });
   };
 
-  const testJSError = () => {
+  const testJSError = (): void => {
     throw new Error('Im the error');
   };
 
   const axiosInst = axios.create();
 
-  const testAxiosApi = () => {
-    axiosInst('https://pokeapi.co/api/v2/pokemon/ditto').then((p) => console.log(p));
+  const testAxiosApi = (): void => {
+    void axiosInst('https://pokeapi.co/api/v2/pokemon/ditto').then((p) => {
+      console.log(p);
+    });
   };
-  const testZustand = () => {
+  const testZustand = (): void => {
     zustandStore.increasePopulation();
   };
 
@@ -153,16 +172,28 @@ export const MainPage = () => {
       <input
         id="visible-input"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
         type="text"
         placeholder={'visible input'}
       />
       <input type="checkbox" />
       <br />
-      <button id={'get-main'} onClick={() => setView('main')}>
+      <button
+        id={'get-main'}
+        onClick={() => {
+          setView('main');
+        }}
+      >
         main
       </button>
-      <button id={'get-table'} onClick={() => setView('table')}>
+      <button
+        id={'get-table'}
+        onClick={() => {
+          setView('table');
+        }}
+      >
         table
       </button>
       {view} view
@@ -176,15 +207,15 @@ export const MainPage = () => {
                 {table
                   .getHeaderGroups()
                   .map((headerGroup: { id: React.Key | null | undefined; headers: any[] }) => (
-                    <tr key={headerGroup.id + Math.random().toString(36)}>
+                    <tr key={`${String(headerGroup.id)}${Math.random().toString(36)}`}>
                       {headerGroup.headers.map(
                         (header: {
-                          id: React.Key | null | undefined;
-                          isPlaceholder: any;
+                          id: React.Key;
+                          isPlaceholder: boolean;
                           column: { columnDef: { header: any } };
                           getContext: () => any;
                         }) => (
-                          <th key={header.id + Math.random().toString(36)}>
+                          <th key={`${header.id}${Math.random().toString(36)}`}>
                             {header.isPlaceholder
                               ? null
                               : flexRender(header.column.columnDef.header, header.getContext())}
@@ -199,16 +230,16 @@ export const MainPage = () => {
                   .getRowModel()
                   .rows.map(
                     (row: { id: React.Key | null | undefined; getVisibleCells: () => any[] }) => (
-                      <tr key={row.id + Math.random().toString(36)}>
+                      <tr key={`${String(row.id)}${Math.random().toString(36)}`}>
                         {row
                           .getVisibleCells()
                           .map(
                             (cell: {
-                              id: React.Key | null | undefined;
+                              id: React.Key;
                               column: { columnDef: { cell: any } };
                               getContext: () => any;
                             }) => (
-                              <td key={cell.id + Math.random().toString(36)}>
+                              <td key={`${cell.id}${Math.random().toString(36)}`}>
                                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
                               </td>
                             )
@@ -221,15 +252,15 @@ export const MainPage = () => {
                 {table
                   .getFooterGroups()
                   .map((footerGroup: { id: React.Key | null | undefined; headers: any[] }) => (
-                    <tr key={footerGroup.id + Math.random().toString(36)}>
+                    <tr key={`${String(footerGroup.id)}${Math.random().toString(36)}`}>
                       {footerGroup.headers.map(
                         (header: {
-                          id: React.Key | null | undefined;
-                          isPlaceholder: any;
+                          id: React.Key;
+                          isPlaceholder: boolean;
                           column: { columnDef: { footer: any } };
                           getContext: () => any;
                         }) => (
-                          <th key={header.id + Math.random().toString(36)}>
+                          <th key={`${header.id}${Math.random().toString(36)}`}>
                             {header.isPlaceholder
                               ? null
                               : flexRender(header.column.columnDef.footer, header.getContext())}
@@ -242,71 +273,65 @@ export const MainPage = () => {
             </table>
             <table>
               <thead>
-                {table
-                  .getHeaderGroups()
-                  .map((headerGroup: { id: React.Key | null | undefined; headers: any[] }) => (
-                    <tr key={headerGroup.id + Math.random().toString(36)}>
-                      {headerGroup.headers.map(
-                        (header: {
-                          id: React.Key | null | undefined;
-                          isPlaceholder: any;
-                          column: { columnDef: { header: any } };
-                          getContext: () => any;
-                        }) => (
-                          <th key={header.id + Math.random().toString(36)}>
-                            {header.isPlaceholder
-                              ? null
-                              : flexRender(header.column.columnDef.header, header.getContext())}
-                          </th>
-                        )
-                      )}
-                    </tr>
-                  ))}
+                {table.getHeaderGroups().map((headerGroup: { id: React.Key; headers: any[] }) => (
+                  <tr key={`${headerGroup.id}${Math.random().toString(36)}`}>
+                    {headerGroup.headers.map(
+                      (header: {
+                        id: React.Key;
+                        isPlaceholder: boolean;
+                        column: { columnDef: { header: any } };
+                        getContext: () => any;
+                      }) => (
+                        <th key={`${header.id}${Math.random().toString(36)}`}>
+                          {header.isPlaceholder
+                            ? null
+                            : flexRender(header.column.columnDef.header, header.getContext())}
+                        </th>
+                      )
+                    )}
+                  </tr>
+                ))}
               </thead>
               <tbody>
                 {table
                   .getRowModel()
-                  .rows.map(
-                    (row: { id: React.Key | null | undefined; getVisibleCells: () => any[] }) => (
-                      <tr key={row.id + Math.random().toString(36)}>
-                        {row
-                          .getVisibleCells()
-                          .map(
-                            (cell: {
-                              id: React.Key | null | undefined;
-                              column: { columnDef: { cell: any } };
-                              getContext: () => any;
-                            }) => (
-                              <td key={cell.id + Math.random().toString(36)}>
-                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                              </td>
-                            )
-                          )}
-                      </tr>
-                    )
-                  )}
-              </tbody>
-              <tfoot>
-                {table
-                  .getFooterGroups()
-                  .map((footerGroup: { id: React.Key | null | undefined; headers: any[] }) => (
-                    <tr key={footerGroup.id + Math.random().toString(36)}>
-                      {footerGroup.headers.map(
-                        (header: {
-                          id: React.Key | null | undefined;
-                          isPlaceholder: any;
-                          column: { columnDef: { footer: any } };
-                          getContext: () => any;
-                        }) => (
-                          <th key={header.id + Math.random().toString(36)}>
-                            {header.isPlaceholder
-                              ? null
-                              : flexRender(header.column.columnDef.footer, header.getContext())}
-                          </th>
-                        )
-                      )}
+                  .rows.map((row: { id: React.Key; getVisibleCells: () => any[] }) => (
+                    <tr key={`${row.id}${Math.random().toString(36)}`}>
+                      {row
+                        .getVisibleCells()
+                        .map(
+                          (cell: {
+                            id: React.Key;
+                            column: { columnDef: { cell: any } };
+                            getContext: () => any;
+                          }) => (
+                            <td key={`${cell.id}${Math.random().toString(36)}`}>
+                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                            </td>
+                          )
+                        )}
                     </tr>
                   ))}
+              </tbody>
+              <tfoot>
+                {table.getFooterGroups().map((footerGroup: { id: React.Key; headers: any[] }) => (
+                  <tr key={`${footerGroup.id}${Math.random().toString(36)}`}>
+                    {footerGroup.headers.map(
+                      (header: {
+                        id: React.Key;
+                        isPlaceholder: boolean;
+                        column: { columnDef: { footer: any } };
+                        getContext: () => any;
+                      }) => (
+                        <th key={`${header.id}${Math.random().toString(36)}`}>
+                          {header.isPlaceholder
+                            ? null
+                            : flexRender(header.column.columnDef.footer, header.getContext())}
+                        </th>
+                      )
+                    )}
+                  </tr>
+                ))}
               </tfoot>
             </table>
             <div className="h-4" />
@@ -317,14 +342,14 @@ export const MainPage = () => {
   );
 };
 
-type Person = {
+interface Person {
   firstName: string;
   lastName: string;
   age: number;
   visits: number;
   status: string;
   progress: number;
-};
+}
 
 const defaultData: Person[] = [
   {
@@ -359,7 +384,7 @@ for (let i = 0; i < 30; i++) {
   defaultData.push(...testArr);
 }
 
-const columns: ColumnDef<Person>[] = [
+const columns: Array<ColumnDef<Person>> = [
   {
     accessorKey: 'firstName',
     cell: (info: { getValue: () => any }) => info.getValue(),

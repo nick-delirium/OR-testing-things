@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
-import { failResult, okResult, Result } from '../../../../lib/result';
+import { failResult, okResult, type Result } from '../../../../lib/result';
 import { graphQlClient } from '../../../../service/graphQL';
-import { LocationDto, LocationsDto } from '../dto/locations';
+import { type LocationDto, type LocationsDto } from '../dto/locations';
 
 export const GET_LOCATIONS_GQL = gql`
   query GetLocations {
@@ -40,8 +40,8 @@ export const getLocations = async (
     return okResult(locations);
   } catch (error: any) {
     const defaultError = {
-      code: error.code || 'ERROR_GET_LOCATIONS',
-      message: error.message || 'Error getting locations',
+      code: error.code ?? 'ERROR_GET_LOCATIONS',
+      message: error.message ?? 'Error getting locations',
     };
 
     return failResult(defaultError);
