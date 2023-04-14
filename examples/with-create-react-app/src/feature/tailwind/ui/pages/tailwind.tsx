@@ -1,5 +1,9 @@
-import { AbstractColorsCard } from "../components/AbstractColorsCard/AbstractColorsCard.component"
+import { AbstractColorsCard } from '../components/AbstractColorsCard/AbstractColorsCard.component';
 
 export const TailwindPage = () => {
-  return <div><AbstractColorsCard /></div>
-}
+  return (
+    <div>
+      <AbstractColorsCard />
+    </div>
+  );
+};

@@ -1,18 +1,15 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { TailwindPage } from "./feature/tailwind/ui/pages/tailwind";
-import { MainPage } from "./feature/main/ui/pages";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { TailwindPage } from './feature/tailwind/ui/pages/tailwind';
+import { MainPage } from './feature/main/ui/pages';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <MainPage />,
     },
     {
-      path: "/tailwind",
+      path: '/tailwind',
       element: <TailwindPage />,
     },
   ]);

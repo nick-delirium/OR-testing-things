@@ -3,7 +3,6 @@
 }
 
 #root {
-
 }
 
 .App-logo {
@@ -51,7 +50,7 @@ button {
   background-color: #0000000d;
   color: #0e0e10;
   padding: 0 20px;
-  border: 1px solid #423f3f ;
+  border: 1px solid #423f3f;
   margin: 1px 4px;
 }
 button:hover {
@@ -59,7 +58,7 @@ button:hover {
 }
 
 input {
-  border: 1px solid #423f3f ;
+  border: 1px solid #423f3f;
 }
 
 a {

@@ -1,14 +1,13 @@
 import React from 'react';
 
 export const AbstractColorsCard: React.FC = () => {
-
   return (
     <div>
       <link
         rel="stylesheet"
         href="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/css/main.ad49aa9b.css"
-        />
-        <div className="flex flex-col justify-center items-center h-[100vh]">
+      />
+      <div className="flex flex-col justify-center items-center h-[100vh]">
         <div className="!z-5 relative flex flex-col rounded-[20px] max-w-[300px] bg-white bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-4 3xl:p-![18px] bg-white undefined">
           <div className="h-full w-full">
             <div className="relative w-full">
@@ -42,37 +41,33 @@ export const AbstractColorsCard: React.FC = () => {
             <div className="mb-3 flex items-center justify-between px-1 md:items-start">
               <div className="mb-2">
                 <p className="text-lg font-bold text-navy-700"> Abstract Colors </p>
-                <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
-                  By Esther Jackson
-                </p>
+                <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">By Esther Jackson</p>
               </div>
               <div className="flex flex-row-reverse md:mt-2 lg:mt-0">
-                        <span className="z-0 ml-px inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#E0E5F2] text-xs text-navy-700 ">
-                          +5
-                        </span>
-                <span
-                  className="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white"
-                >
-                          <img
-                            className="h-full w-full rounded-full object-cover"
-                            src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar1.eeef2af6dfcd3ff23cb8.png"
-                            alt=""
-                          />
-                        </span>
+                <span className="z-0 ml-px inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#E0E5F2] text-xs text-navy-700 ">
+                  +5
+                </span>
                 <span className="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-                            <img
-                              className="h-full w-full rounded-full object-cover"
-                              src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar2.5692c39db4f8c0ea999e.png"
-                              alt=""
-                            />
-                        </span>
+                  <img
+                    className="h-full w-full rounded-full object-cover"
+                    src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar1.eeef2af6dfcd3ff23cb8.png"
+                    alt=""
+                  />
+                </span>
                 <span className="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-                            <img
-                              className="h-full w-full rounded-full object-cover"
-                              src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar3.9f646ac5920fa40adf00.png"
-                              alt=""
-                            />
-                        </span>
+                  <img
+                    className="h-full w-full rounded-full object-cover"
+                    src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar2.5692c39db4f8c0ea999e.png"
+                    alt=""
+                  />
+                </span>
+                <span className="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                  <img
+                    className="h-full w-full rounded-full object-cover"
+                    src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar3.9f646ac5920fa40adf00.png"
+                    alt=""
+                  />
+                </span>
               </div>
             </div>
             <div className="flex items-center justify-between md:items-center lg:justify-between ">
@@ -81,9 +76,7 @@ export const AbstractColorsCard: React.FC = () => {
                   Current Bid: 0.91 <span>ETH</span>
                 </p>
               </div>
-              <button
-                className="h-12 linear rounded-[20px] bg-brand-900 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-800 active:bg-brand-700"
-              >
+              <button className="h-12 linear rounded-[20px] bg-brand-900 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-800 active:bg-brand-700">
                 Place Bid
               </button>
             </div>
@@ -91,5 +84,5 @@ export const AbstractColorsCard: React.FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
