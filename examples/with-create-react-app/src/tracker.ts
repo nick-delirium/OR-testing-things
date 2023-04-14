@@ -6,6 +6,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { counterReducer } from "./store";
 import { v4 } from "uuid";
 import trackerRedux from '@openreplay/tracker-redux';
+import trackerGraphQL from '@openreplay/tracker-graphql';
+
 
 export const userId = v4();
 
@@ -63,6 +65,8 @@ tracker.use(
 );
 
 const openReplayMiddleware = tracker.use(trackerRedux())
+
+export const recordGraphQL = tracker.use(trackerGraphQL());
 
 export const store = createStore(
   // @ts-ignore

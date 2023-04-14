@@ -1497,6 +1497,9 @@
   resolved "https://registry.yarnpkg.com/@openreplay/tracker-fetch/-/tracker-fetch-3.6.2.tgz#1c7db6c8e9ded697ef0ea31d1a60796ffac0961d"
   integrity sha512-anM322k/ZUShPEs3IDOOm3AVJPWnmhcwY2Nr08oy3KbMHDcKcbipbiq3AJ6MHxIA3J5Tcyhn9MNcv+tX3OzGcg==
 
+"@openreplay/tracker-graphql@file:../../../openreplay/tracker/tracker-graphql":
+  version "3.0.1"
+
 "@openreplay/tracker-redux@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@openreplay/tracker-redux/-/tracker-redux-3.5.1.tgz#f14ca88cc204f1f5a3a1867464da59e16e52a4f2"

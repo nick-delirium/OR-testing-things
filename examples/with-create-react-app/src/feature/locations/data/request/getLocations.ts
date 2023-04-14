@@ -6,6 +6,7 @@ import { LocationDto, LocationsDto } from '../dto/locations';
 export const GET_LOCATIONS_GQL = gql`
   query GetLocations {
     locations {
+      oi
       id
       name
       description

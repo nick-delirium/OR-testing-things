@@ -8,6 +8,7 @@
     "@openreplay/tracker-assist": "file:../../../openreplay/tracker/tracker-assist",
     "@openreplay/tracker-axios": "^3.6.1",
     "@openreplay/tracker-fetch": "^3.6.1",
+    "@openreplay/tracker-graphql": "file:../../../openreplay/tracker/tracker-graphql",
     "@openreplay/tracker-redux": "^3.5.1",
     "@openreplay/tracker-zustand": "^1.0.3",
     "@tanstack/react-table": "^8.2.6",
