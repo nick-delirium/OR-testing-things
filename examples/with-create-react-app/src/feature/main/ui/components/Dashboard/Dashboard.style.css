@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  gap: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 8px;
+}

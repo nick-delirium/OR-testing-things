@@ -3,7 +3,6 @@
 }
 
 #root {
-
 }
 
 .App-logo {
@@ -41,27 +40,27 @@
 }
 
 button {
-  display: inline-block!important;
-  outline: 0!important;
-  cursor: pointer!important;
-  font-weight: 600!important;
-  border-radius: 4px!important;
-  font-size: 13px!important;
-  height: 30px!important;
-  background-color: #0000000d!important;
-  color: #0e0e10!important;
-  padding: 0 20px!important;
-  border: 1px solid #423f3f !important;
-  margin: 1px 4px!important;
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 13px;
+  height: 30px;
+  background-color: #0000000d;
+  color: #0e0e10;
+  padding: 0 20px;
+  border: 1px solid #423f3f;
+  margin: 1px 4px;
 }
 button:hover {
   background-color: #0000001a;
 }
 
 input {
-  border: 1px solid #423f3f !important;
+  border: 1px solid #423f3f;
 }
 
 a {
-  color: blue!important;
+  color: blue;
 }
