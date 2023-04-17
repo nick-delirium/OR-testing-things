@@ -17,8 +17,6 @@ const zustandPlugin = trackerEx.use(trackerZustand());
 
 const bearStoreLogger = zustandPlugin('bear_store');
 
-console.log(bearStoreLogger);
-
 const useBearStore = create(
   bearStoreLogger((set: any) => ({
     bears: 0,
