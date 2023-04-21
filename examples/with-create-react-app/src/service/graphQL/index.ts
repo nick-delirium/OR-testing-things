@@ -4,5 +4,5 @@ import { openReplayTrackerApolloLink } from './links/openReplayTrackerApolloLink
 
 export const graphQlClient = new ApolloClient({
   cache: new InMemoryCache(),
-  link: ApolloLink.from([httpApolloLink, openReplayTrackerApolloLink]),
+  link: ApolloLink.from([openReplayTrackerApolloLink, httpApolloLink]),
 });
