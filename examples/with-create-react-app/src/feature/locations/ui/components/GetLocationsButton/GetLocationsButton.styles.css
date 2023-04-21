@@ -1,11 +1,20 @@
-.button {}
+.button {
+}
 
 .success {
   background-color: green;
   color: white;
 }
 
+.success:hover {
+  background-color: darkGreen;
+}
+
 .error {
   background-color: red;
   color: white;
+}
+
+.error:hover {
+  background-color: darkRed;
 }
