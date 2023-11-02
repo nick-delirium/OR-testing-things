@@ -26,6 +26,9 @@ const Home: NextPage<Props> = ({ userId }) => {
         <p className={styles.description}>
           Get started by editing <code className={styles.code}>pages/index.tsx</code>
         </p>
+        <button>test</button>
+        <button id={"test123"}>test2</button>
+        <button className={'test332211'}>test3</button>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>

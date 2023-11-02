@@ -3,5 +3,6 @@
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly REACT_APP_OPEN_REPLAY_KEY: string;
+    readonly REACT_APP_INGEST: string;
   }
 }

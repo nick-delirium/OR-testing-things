@@ -6,7 +6,12 @@ import dynamic from "next/dynamic";
 const OpenReplayTracker = dynamic(() => import("../components/OpenReplayTracker"), { ssr: false });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} trackerComponent={<OpenReplayTracker />} />;
+  return (
+    <>
+      <OpenReplayTracker />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;

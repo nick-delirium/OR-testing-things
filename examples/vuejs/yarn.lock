@@ -12,15 +12,22 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.7.tgz#1ec4af4a16c554cbd402cc557ccdd874e3f7be53"
   integrity sha512-IKznSJOsVUuyt7cDzzSZyqBEcZe+7WlBqTVXiF1OXP/4Nm387ToaXZ0fyLwI1iBlI/bzpxVq411QE2/Bt2XWWw==
 
-"@openreplay/tracker-vuex@file:../../../openreplay/tracker/tracker-vuex":
-  version "4.0.2"
+"@medv/finder@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@medv/finder/-/finder-3.0.0.tgz#141b81504f71c25ca860716451b8bcb2d8ef4783"
+  integrity sha512-GhTmdnzIm+EMCSAF6QL1JunVN/9r4GUbYBWbhX7zOCtNqhsA/Bo9ltr+Cl5p5U4F9PTEwnF7pWmSPWC3H3MUQQ==
 
-"@openreplay/tracker@4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@openreplay/tracker/-/tracker-4.1.1.tgz#62c7fb29219258b121d8de85630882e1b11fee4d"
-  integrity sha512-yedI0G9CFYfdoUqQfRMRT6RWVkmv/hD2X5CAokV1WOIQQGeJ+9hj0+sbsqBTA+VveS1fA7pwvpjG0uDt7H+KdA==
+"@openreplay/tracker-vuex@file:../../../openreplay/tracker/tracker-vuex":
+  version "4.0.3"
+
+"@openreplay/tracker@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@openreplay/tracker/-/tracker-6.0.2.tgz#74f21036bd2704030cab98530e0713fbc5460891"
+  integrity sha512-u9e4ZmONacXA0equZGtrrj1wk7za7HRUFk2O0ScOj8WjCltaabZDvsQbe1L3d80pf8zxzUQP6ClaBIF7KDH6CA==
   dependencies:
+    "@medv/finder" "^3.0.0"
     error-stack-parser "^2.0.6"
+    fflate "^0.7.4"
 
 "@vitejs/plugin-vue@^3.1.0":
   version "3.1.0"
@@ -265,6 +272,11 @@ estree-walker@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
+
+fflate@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.7.4.tgz#61587e5d958fdabb5a9368a302c25363f4f69f50"
+  integrity sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==
 
 fsevents@~2.3.2:
   version "2.3.2"

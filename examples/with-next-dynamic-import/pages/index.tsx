@@ -3,12 +3,9 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Link from 'next/link'
 
-type Props = {
-  trackerComponent: React.ReactElement;
-};
-
-const Home: NextPage<Props> = ({ trackerComponent }) => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -21,8 +18,8 @@ const Home: NextPage<Props> = ({ trackerComponent }) => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <Link href='/test'>Test</Link>
 
-        {trackerComponent}
         <p className={styles.description}>
           Get started by editing <code className={styles.code}>pages/index.tsx</code>
         </p>

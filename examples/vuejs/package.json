@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@openreplay/tracker": "4.1.1",
+    "@openreplay/tracker": "^6.0.2",
     "@openreplay/tracker-vuex": "file:../../../openreplay/tracker/tracker-vuex",
     "pinia": "^2.0.22",
     "vue": "^3.2.38"
